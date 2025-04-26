@@ -5,7 +5,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.cancel
 
-class BaseViewModel {
+actual open class BaseViewModel {
     actual val scope: CoroutineScope = CoroutineScope(Dispatchers.IO)
 
     fun clear() {
