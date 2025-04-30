@@ -1,4 +1,4 @@
-package com.petros.efthumiou.dailypulse.articles
+package com.petros.efthumiou.dailypulse.articles.models
 
 data class Article (
     val title: String,
