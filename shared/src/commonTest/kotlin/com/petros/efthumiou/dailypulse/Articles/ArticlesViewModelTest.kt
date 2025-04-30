@@ -5,6 +5,7 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.test.*
 import kotlin.test.*
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class ArticlesViewModelTest {
 
     private val testDispatcher = StandardTestDispatcher()
