@@ -1,6 +1,7 @@
 package com.petros.efthumiou.dailypulse.articles
 
 import com.petros.efthumiou.dailypulse.BaseViewModel
+import com.petros.efthumiou.dailypulse.articles.models.Article
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
