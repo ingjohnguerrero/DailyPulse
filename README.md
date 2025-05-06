@@ -15,3 +15,12 @@ It is a prototype app based on the following technologies and patterns:
 5. Koin
 6. Jetpack Compose
 7. Swift UI
+
+## Releases
+
+### 1.0
+
+#### Feat
+
+* Add Networking with Ktor
+* Add Dependency Injection with Koin
