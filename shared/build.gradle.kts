@@ -74,7 +74,7 @@ sqldelight {
     databases {
         create(name = "DailyPulseDatabase") {
             packageName.set("petros.efthymiou.dailypulse.db")
-            dialect(libs.sqlDelight.dialects.mysql)
+//            dialect(libs.sqlDelight.dialects.mysql)
         }
     }
 }

@@ -3,6 +3,7 @@ package com.petros.efthumiou.dailypulse.articles
 import com.petros.efthumiou.dailypulse.api.articles.ArticleRaw
 import com.petros.efthumiou.dailypulse.api.articles.ArticlesServiceInterface
 import com.petros.efthumiou.dailypulse.articles.models.Article
+import com.petros.efthumiou.dailypulse.articles.repository.ArticlesRepository
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
@@ -11,10 +12,12 @@ import kotlinx.datetime.toLocalDateTime
 import kotlinx.datetime.todayIn
 import kotlin.math.abs
 
-class ArticlesUseCase(private val service: ArticlesServiceInterface) {
+class ArticlesUseCase(private val repo: ArticlesRepository) {
 
-    suspend fun getArticles(): List<Article> {
-        val articlesRaw = service.fetchArticles()
+    suspend fun getArticles(forceFetch: Boolean): List<Article> {
+        val articlesRaw = repo.getArticles(
+            forceFetch = forceFetch
+        )
         return mapArticles(articlesRaw)
     }
 
