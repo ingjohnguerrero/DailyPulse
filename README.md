@@ -18,6 +18,14 @@ It is a prototype app based on the following technologies and patterns:
 
 ## Releases
 
+### 2.0
+
+#### Feat
+
+* Add Local DB by using SQLDelight
+* Add Repository pattern for articles
+* Add pull to refresh functionality on iOS and Android
+
 ### 1.0
 
 #### Feat
