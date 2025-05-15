@@ -1,14 +1,12 @@
-package com.petros.efthumiou.dailypulse.api.articles
+package com.petros.efthumiou.dailypulse.articles.data
 
 import com.petros.efthumiou.dailypulse.articles.data.articles.ArticleRaw
 import com.petros.efthumiou.dailypulse.articles.data.articles.ArticlesResponse
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import kotlin.test.Test
 import kotlin.test.assertTrue
 import kotlin.test.assertEquals
-import kotlin.test.assertNotNull
 
 class ArticlesResponseTest {
     private val json = Json { ignoreUnknownKeys = true }

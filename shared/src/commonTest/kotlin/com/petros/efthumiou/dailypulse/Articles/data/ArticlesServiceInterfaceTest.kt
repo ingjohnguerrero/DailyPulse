@@ -1,4 +1,4 @@
-package com.petros.efthumiou.dailypulse.api.articles
+package com.petros.efthumiou.dailypulse.articles.data
 
 import com.petros.efthumiou.dailypulse.articles.data.articles.ArticleRaw
 import com.petros.efthumiou.dailypulse.articles.data.articles.ArticlesServiceInterface

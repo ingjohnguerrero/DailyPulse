@@ -1,4 +1,4 @@
-package com.petros.efthumiou.dailypulse.api.articles
+package com.petros.efthumiou.dailypulse.articles.data
 
 import com.petros.efthumiou.dailypulse.articles.data.articles.KtorArticlesService
 import io.ktor.client.*

@@ -1,9 +1,10 @@
-package com.petros.efthumiou.dailypulse.api.articles
+package com.petros.efthumiou.dailypulse.articles.application
 
 import com.petros.efthumiou.dailypulse.articles.data.articles.ArticleRaw
 import com.petros.efthumiou.dailypulse.articles.data.articles.ArticlesServiceInterface
 import com.petros.efthumiou.dailypulse.articles.application.models.ArticlesUseCase
 import com.petros.efthumiou.dailypulse.articles.application.models.Article
+import com.petros.efthumiou.dailypulse.articles.data.repository.ArticlesRepository
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -29,11 +30,17 @@ class ArticlesUseCaseTest {
         }
     }
 
+    private val mockRepository: ArticlesRepository = object : ArticlesRepository {
+        override suspend fun getArticles(forceFetch: Boolean): List<ArticleRaw> {
+            return mockService.fetchArticles()
+        }
+    }
+
     @Test
     fun testArticleMapping() = runTest {
-        val useCase = ArticlesUseCase(mockService)
+        val useCase = ArticlesUseCase(mockRepository)
 
-        val articles: List<Article> = useCase.getArticles()
+        val articles: List<Article> = useCase.getArticles(forceFetch = false)
 
         assertEquals(3, articles.size)
 

@@ -1,7 +1,7 @@
 package com.petros.efthumiou.dailypulse.articles.application.models
 
 import com.petros.efthumiou.dailypulse.articles.data.articles.ArticleRaw
-import com.petros.efthumiou.dailypulse.articles.repository.ArticlesRepository
+import com.petros.efthumiou.dailypulse.articles.data.repository.ArticlesRepository
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
