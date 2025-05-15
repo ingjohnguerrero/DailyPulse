@@ -1,7 +1,7 @@
 package com.petros.efthumiou.dailypulse.articles.repository
 
-import com.petros.efthumiou.dailypulse.api.articles.ArticleRaw
-import com.petros.efthumiou.dailypulse.api.articles.ArticlesServiceInterface
+import com.petros.efthumiou.dailypulse.articles.data.articles.ArticleRaw
+import com.petros.efthumiou.dailypulse.articles.data.articles.ArticlesServiceInterface
 import com.petros.efthumiou.dailypulse.articles.repository.db.ArticlesDataSource
 
 class ArticlesRepository(

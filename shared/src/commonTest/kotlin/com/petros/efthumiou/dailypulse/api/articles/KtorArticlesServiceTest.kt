@@ -1,5 +1,6 @@
 package com.petros.efthumiou.dailypulse.api.articles
 
+import com.petros.efthumiou.dailypulse.articles.data.articles.KtorArticlesService
 import io.ktor.client.*
 import io.ktor.client.engine.mock.*
 import io.ktor.client.plugins.contentnegotiation.*

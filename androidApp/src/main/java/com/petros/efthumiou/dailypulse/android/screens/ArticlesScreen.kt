@@ -33,8 +33,8 @@ import coil.compose.AsyncImage
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.SwipeRefreshState
 
-import com.petros.efthumiou.dailypulse.articles.models.Article
-import com.petros.efthumiou.dailypulse.articles.ArticlesViewModel
+import com.petros.efthumiou.dailypulse.articles.application.models.Article
+import com.petros.efthumiou.dailypulse.articles.presentation.ArticlesViewModel
 import org.koin.androidx.compose.getViewModel
 
 

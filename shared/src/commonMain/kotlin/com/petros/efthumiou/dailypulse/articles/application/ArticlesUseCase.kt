@@ -1,8 +1,6 @@
-package com.petros.efthumiou.dailypulse.articles
+package com.petros.efthumiou.dailypulse.articles.application.models
 
-import com.petros.efthumiou.dailypulse.api.articles.ArticleRaw
-import com.petros.efthumiou.dailypulse.api.articles.ArticlesServiceInterface
-import com.petros.efthumiou.dailypulse.articles.models.Article
+import com.petros.efthumiou.dailypulse.articles.data.articles.ArticleRaw
 import com.petros.efthumiou.dailypulse.articles.repository.ArticlesRepository
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant

@@ -1,5 +1,7 @@
 package com.petros.efthumiou.dailypulse.api.articles
 
+import com.petros.efthumiou.dailypulse.articles.data.articles.ArticleRaw
+import com.petros.efthumiou.dailypulse.articles.data.articles.ArticlesResponse
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json

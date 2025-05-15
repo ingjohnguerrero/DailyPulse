@@ -1,6 +1,6 @@
 package com.petros.efthumiou.dailypulse
 
-import com.petros.efthumiou.dailypulse.articles.ArticlesViewModel
+import com.petros.efthumiou.dailypulse.articles.presentation.ArticlesViewModel
 import kotlinx.coroutines.*
 import kotlinx.coroutines.test.*
 import kotlin.test.*

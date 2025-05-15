@@ -1,9 +1,9 @@
 package com.petros.efthumiou.dailypulse.api.articles
 
-import com.petros.efthumiou.dailypulse.api.articles.ArticleRaw
-import com.petros.efthumiou.dailypulse.api.articles.ArticlesServiceInterface
-import com.petros.efthumiou.dailypulse.articles.ArticlesUseCase
-import com.petros.efthumiou.dailypulse.articles.models.Article
+import com.petros.efthumiou.dailypulse.articles.data.articles.ArticleRaw
+import com.petros.efthumiou.dailypulse.articles.data.articles.ArticlesServiceInterface
+import com.petros.efthumiou.dailypulse.articles.application.models.ArticlesUseCase
+import com.petros.efthumiou.dailypulse.articles.application.models.Article
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -12,7 +12,6 @@ import kotlinx.datetime.Clock
 import kotlinx.datetime.DateTimePeriod
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.minus
-import kotlinx.datetime.toLocalDateTime
 
 class ArticlesUseCaseTest {
 

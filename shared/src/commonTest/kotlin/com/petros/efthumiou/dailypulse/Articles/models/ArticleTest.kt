@@ -1,6 +1,6 @@
 package com.petros.efthumiou.dailypulse.Articles.models
 
-import com.petros.efthumiou.dailypulse.articles.models.Article
+import com.petros.efthumiou.dailypulse.articles.application.models.Article
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

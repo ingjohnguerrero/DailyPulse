@@ -1,6 +1,6 @@
-package com.petros.efthumiou.dailypulse.articles
+package com.petros.efthumiou.dailypulse.articles.presentation
 
-import com.petros.efthumiou.dailypulse.articles.models.Article
+import com.petros.efthumiou.dailypulse.articles.application.models.Article
 
 data class ArticlesState(
     val articles: List<Article> = listOf(),
