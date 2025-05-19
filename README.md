@@ -9,7 +9,7 @@ Daily Pulse is using the news API to fetch, cache and display the top US busines
 
 | iOS | Android |
 |--------|-------|
-| <img src="https://github.com/user-attachments/assets/9ce67ef7-0943-41a9-a13d-d7dd2795e0c3" height="500"> | <img src="https://github.com/user-attachments/assets/6a024735-ac2a-4bbc-a358-464b85368c5b" height="500">|
+| <img src="https://github.com/user-attachments/assets/446b0112-c16e-4dcf-8dfc-b1350a7880d0" height="500"> | <img src="https://github.com/user-attachments/assets/6a024735-ac2a-4bbc-a358-464b85368c5b" height="500">|
 
 ## Tech Stack
 It is a prototype app based on the following technologies and patterns:
@@ -24,6 +24,16 @@ It is a prototype app based on the following technologies and patterns:
 
 ## Releases
 
+### 3.0
+
+#### Feat
+
+* Add Local DB data source for sources
+* Add Repository pattern for sources
+* Add pull to refresh functionality for sources on iOS and Android
+* Add sources screen to display the list of news sources
+* Add unit tests for sources module
+
 ### 2.0
 
 #### Feat
@@ -31,6 +41,7 @@ It is a prototype app based on the following technologies and patterns:
 * Add Local DB by using SQLDelight
 * Add Repository pattern for articles
 * Add pull to refresh functionality on iOS and Android
+* Add unit tests for articles module
 
 ### 1.0
 

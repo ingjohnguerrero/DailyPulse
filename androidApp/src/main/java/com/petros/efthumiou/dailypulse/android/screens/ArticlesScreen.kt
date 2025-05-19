@@ -11,7 +11,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.outlined.List
 import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.List
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -30,27 +32,30 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import com.google.accompanist.swiperefresh.SwipeRefresh
+import com.google.accompanist.swiperefresh.SwipeRefreshState
 
-import com.petros.efthumiou.dailypulse.articles.models.Article
-import com.petros.efthumiou.dailypulse.articles.ArticlesViewModel
+import com.petros.efthumiou.dailypulse.articles.application.models.Article
+import com.petros.efthumiou.dailypulse.articles.presentation.ArticlesViewModel
 import org.koin.androidx.compose.getViewModel
 
 
 @Composable
 fun ArticlesScreen(
     onAboutButtonClick: () -> Unit,
+    onSourcesButtonClick: () -> Unit,
     articlesViewModel: ArticlesViewModel = getViewModel(),
 ){
     val articlesState = articlesViewModel.articlesState.collectAsState()
 
     Column {
-        AppBar(onAboutButtonClick)
+        AppBar(onAboutButtonClick, onSourcesButtonClick)
         if (articlesState.value.loading)
             Loader()
         if (articlesState.value.error != null)
             ErrorMessage(message = articlesState.value.error ?: "I've got an error")
         if (articlesState.value.articles.isNotEmpty())
-            ArticlesListView(articlesViewModel.articlesState.value.articles)
+            ArticlesListView(articlesViewModel)
     }
 }
 
@@ -58,6 +63,7 @@ fun ArticlesScreen(
 @Composable
 private fun AppBar(
     onAboutButtonClick: () -> Unit,
+    onSourcesButtonClick: () -> Unit,
 ){
     TopAppBar(
         title = { Text(text = "Articles") },
@@ -68,15 +74,25 @@ private fun AppBar(
                     contentDescription = "About Device Button"
                 )
             }
+            IconButton(onClick = onSourcesButtonClick) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Outlined.List,
+                    contentDescription = "Sources Button"
+                )
+            }
         }
     )
 }
 
 @Composable
-private fun ArticlesListView(articles: List<Article>) {
-    LazyColumn(modifier = Modifier.fillMaxSize()){
-        items(articles) { article ->
-            ArticleItemView(article = article)
+private fun ArticlesListView(viewModel: ArticlesViewModel) {
+    SwipeRefresh(
+        state = SwipeRefreshState(viewModel.articlesState.value.loading),
+        onRefresh = { viewModel.getArticles(true) }) {
+        LazyColumn(modifier = Modifier.fillMaxSize()) {
+            items(viewModel.articlesState.value.articles) { article ->
+                ArticleItemView(article = article)
+            }
         }
     }
 }
