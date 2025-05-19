@@ -24,6 +24,16 @@ It is a prototype app based on the following technologies and patterns:
 
 ## Releases
 
+### 3.0
+
+#### Feat
+
+* Add Local DB data source for sources
+* Add Repository pattern for sources
+* Add pull to refresh functionality for sources on iOS and Android
+* Add sources screen to display the list of news sources
+* Add unit tests for sources module
+
 ### 2.0
 
 #### Feat
@@ -31,6 +41,7 @@ It is a prototype app based on the following technologies and patterns:
 * Add Local DB by using SQLDelight
 * Add Repository pattern for articles
 * Add pull to refresh functionality on iOS and Android
+* Add unit tests for articles module
 
 ### 1.0
 
