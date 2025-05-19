@@ -65,8 +65,9 @@ struct ArticlesScreen: View {
 }
 
 struct AppBar: View {
+    var title: String = "Articles"
     var body: some View {
-        Text("Articles")
+        Text(title)
             .font(.largeTitle)
             .fontWeight(.bold)
     }
