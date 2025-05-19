@@ -11,9 +11,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.outlined.List
-import androidx.compose.material.icons.outlined.Info
-import androidx.compose.material.icons.outlined.List
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -31,53 +29,43 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.AsyncImage
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.SwipeRefreshState
-
-import com.petros.efthumiou.dailypulse.articles.application.models.Article
-import com.petros.efthumiou.dailypulse.articles.presentation.ArticlesViewModel
+import com.petros.efthumiou.dailypulse.sources.application.Source
+import com.petros.efthumiou.dailypulse.sources.presentation.SourcesState
+import com.petros.efthumiou.dailypulse.sources.presentation.SourcesViewModel
 import org.koin.androidx.compose.getViewModel
 
-
 @Composable
-fun ArticlesScreen(
-    onAboutButtonClick: () -> Unit,
-    onSourcesButtonClick: () -> Unit,
-    articlesViewModel: ArticlesViewModel = getViewModel(),
-){
-    val articlesState = articlesViewModel.articlesState.collectAsState()
-
+fun SourcesScreen(
+    sourcesViewModel: SourcesViewModel = getViewModel(),
+    onUpButtonClick: () -> Unit,
+) {
+    val sourceState = sourcesViewModel.state.collectAsState()
     Column {
-        AppBar(onAboutButtonClick, onSourcesButtonClick)
-        if (articlesState.value.loading)
+        AppBar(onUpButtonClick)
+        if (sourceState.value.loading)
             Loader()
-        if (articlesState.value.error != null)
-            ErrorMessage(message = articlesState.value.error ?: "I've got an error")
-        if (articlesState.value.articles.isNotEmpty())
-            ArticlesListView(articlesViewModel)
+        if (sourceState.value.error != null)
+            ErrorMessage(message = sourceState.value.error ?: "I've got an error")
+        if (sourceState.value.sources.isNotEmpty())
+            SourcesListView(sourcesViewModel)
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun AppBar(
-    onAboutButtonClick: () -> Unit,
-    onSourcesButtonClick: () -> Unit,
-){
+fun AppBar(
+    onUpButtonClick: () -> Unit,
+) {
     TopAppBar(
-        title = { Text(text = "Articles") },
-        actions = {
-            IconButton(onClick = onAboutButtonClick) {
+        title = { Text(text = "Sources") },
+        navigationIcon = {
+            IconButton(onClick = onUpButtonClick) {
                 Icon(
-                    imageVector = Icons.Outlined.Info,
-                    contentDescription = "About Device Button"
-                )
-            }
-            IconButton(onClick = onSourcesButtonClick) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Outlined.List,
-                    contentDescription = "Sources Button"
+                    imageVector = Icons.Default.ArrowBack,
+                    contentDescription = "Up button",
                 )
             }
         }
@@ -85,41 +73,47 @@ private fun AppBar(
 }
 
 @Composable
-private fun ArticlesListView(viewModel: ArticlesViewModel) {
+fun SourcesListView(
+    viewModel: SourcesViewModel
+) {
     SwipeRefresh(
-        state = SwipeRefreshState(viewModel.articlesState.value.loading),
-        onRefresh = { viewModel.getArticles(true) }) {
-        LazyColumn(modifier = Modifier.fillMaxSize()) {
-            items(viewModel.articlesState.value.articles) { article ->
-                ArticleItemView(article = article)
+        state = SwipeRefreshState(viewModel.state.value.loading),
+        onRefresh = { viewModel.getSources(true) }
+    ) {
+        LazyColumn(
+            modifier = Modifier.fillMaxSize()
+        ) {
+            items(viewModel.state.value.sources) { source ->
+                SourceItemView(source)
             }
         }
     }
 }
 
 @Composable
-fun ArticleItemView(article: Article) {
+fun SourceItemView(
+    source: Source,
+) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp)
     ) {
-        AsyncImage(
-            model = article.imageUrl,
-            contentDescription = null
+        // Display source details
+        Text(
+            text = source.name,
+            style = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Bold)
         )
         Spacer(modifier = Modifier.height(4.dp))
         Text(
-            text = article.title,
-            style = TextStyle(fontWeight =  FontWeight.Bold, fontSize = 22.sp)
+            text = source.description,
+            style = TextStyle(fontSize = 16.sp)
         )
-        Spacer(modifier = Modifier.height(8.dp))
-        Text(text = article.desc)
         Spacer(modifier = Modifier.height(4.dp))
         Text(
-            text = article.date,
-            style = TextStyle(color = Color.Gray),
-            modifier = Modifier.align(Alignment.End)
+            text = source.locale,
+            style = TextStyle(fontSize = 14.sp, color = Color.Gray),
+            modifier = Modifier.fillMaxWidth().align(Alignment.End)
         )
         Spacer(modifier = Modifier.height(4.dp))
     }
@@ -151,3 +145,5 @@ private fun ErrorMessage(message: String) {
         )
     }
 }
+
+
