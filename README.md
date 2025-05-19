@@ -9,7 +9,7 @@ Daily Pulse is using the news API to fetch, cache and display the top US busines
 
 | iOS | Android |
 |--------|-------|
-| <img src="https://github.com/user-attachments/assets/9ce67ef7-0943-41a9-a13d-d7dd2795e0c3" height="500"> | <img src="https://github.com/user-attachments/assets/6a024735-ac2a-4bbc-a358-464b85368c5b" height="500">|
+| <img src="https://github.com/user-attachments/assets/446b0112-c16e-4dcf-8dfc-b1350a7880d0" height="500"> | <img src="https://github.com/user-attachments/assets/6a024735-ac2a-4bbc-a358-464b85368c5b" height="500">|
 
 ## Tech Stack
 It is a prototype app based on the following technologies and patterns:
