@@ -11,8 +11,8 @@ android {
         applicationId = "com.petros.efthumiou.dailypulse.android"
         minSdk = 24
         targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 3
+        versionName = "3.0"
     }
     buildFeatures {
         compose = true
